@@ -10,6 +10,7 @@ public class LongestWord {
     }
 
     public String FindLW_Loop() throws IOException {
+        List<String> ans = new ArrayList<String>();
         long start = System.currentTimeMillis();
         String LW = " ";
 
@@ -17,9 +18,16 @@ public class LongestWord {
             String line = br.readLine();
             if (line == null) break;
 
-            else if (line.length() >= LW.length()) {
+            else if (line.length() > LW.length()) {
                 LW = line;
+                ans.clear();
+                ans.add(LW);
             }
+            
+            else if (line.length() == LW.length()) {
+                LW = line;
+                ans.add(LW);
+            }        
         }
         long end = System.currentTimeMillis();
         System.out.println("\n실행 시간 : " + (end - start) / 1000.0);
